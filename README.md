@@ -1,2 +1,2 @@
 # Hastane-Kayit-Sistemi-
-Hasta ekleme ve sorgulama
+Hasta ekleme,sorgulama,güncelleme
