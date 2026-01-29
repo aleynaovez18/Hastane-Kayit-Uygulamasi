@@ -235,6 +235,94 @@ header h1 {
     text-align: right;
 }
 
+.patient-card .card-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #e3f2fd;
+    justify-content: flex-end;
+}
+
+.btn-edit,
+.btn-update,
+.btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+    color: white;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #f57c00 0%, #e65100 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.3);
+}
+
+.btn-update {
+    background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+    color: white;
+}
+
+.btn-update:hover {
+    background: linear-gradient(135deg, #45a049 0%, #388e3c 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.3);
+}
+
+.btn-update:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #757575 0%, #616161 100%);
+    color: white;
+}
+
+.btn-cancel:hover {
+    background: linear-gradient(135deg, #616161 0%, #424242 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(117, 117, 117, 0.3);
+}
+
+.patient-card.edit-mode .form-group {
+    margin-bottom: 15px;
+}
+
+.patient-card.edit-mode .form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1em;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.patient-card.edit-mode .form-group input:focus {
+    outline: none;
+    border-color: #1976d2;
+    box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.1);
+}
+
+.patient-card.edit-mode .form-group label {
+    display: block;
+    color: #555;
+    font-weight: 500;
+    font-size: 0.95em;
+    margin-bottom: 5px;
+}
+
 .patient-card.not-found {
     background: linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%);
     border-color: #ffcdd2;
@@ -402,6 +490,16 @@ tbody td.empty {
 
     .patient-card .info-value {
         text-align: left;
+    }
+
+    .patient-card .card-actions {
+        flex-direction: column;
+    }
+
+    .btn-edit,
+    .btn-update,
+    .btn-cancel {
+        width: 100%;
     }
 }
 

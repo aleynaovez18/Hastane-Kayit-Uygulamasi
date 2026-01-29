@@ -97,11 +97,66 @@ public class PatientController : ControllerBase
             return StatusCode(500, new { message = "Kişi sorgulanırken bir hata oluştu", error = ex.Message });
         }
     }
+
+    [HttpPut("{tc}")]
+    public async Task<IActionResult> UpdatePatient(string tc, [FromBody] KisiGuncelleRequest request)
+    {
+        try
+        {
+            if (string.IsNullOrWhiteSpace(tc))
+            {
+                return BadRequest(new { message = "TC Kimlik Numarası boş olamaz" });
+            }
+
+            if (request == null)
+            {
+                return BadRequest(new { message = "İstek gövdesi boş olamaz" });
+            }
+
+            var bulunankisi = await _context.Kisiler
+                .FirstOrDefaultAsync(k => k.Tckimlikno == tc);
+
+            if (bulunankisi == null)
+            {
+                return NotFound(new { message = "Güncellenecek kişi bulunamadı." });
+            }
+
+            // İsim güncelleme
+            if (!string.IsNullOrWhiteSpace(request.Isim))
+            {
+                bulunankisi.IsimGüncelle(request.Isim);
+            }
+
+            // Telefon güncelleme
+            if (!string.IsNullOrWhiteSpace(request.TelefonNumarasi))
+            {
+                bulunankisi.TelefonGüncelle(request.TelefonNumarasi);
+            }
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = $"{tc} tcli kişi başarıyla güncellendi", kisi = bulunankisi });
+        }
+        catch (ArgumentException ex)
+        {
+            return BadRequest(new { message = $"Kişi güncellenirken hata oluştu: {ex.Message}" });
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Kişi güncellenirken bir hata oluştu", error = ex.Message });
+        }
+    }
 }
 
 public class KisiKaydetRequest
 {
     public string TcKimlikNo { get; set; } = string.Empty;
+    public string Isim { get; set; } = string.Empty;
+    public string TelefonNumarasi { get; set; } = string.Empty;
+}
+
+public class KisiGuncelleRequest
+{
     public string Isim { get; set; } = string.Empty;
     public string TelefonNumarasi { get; set; } = string.Empty;
 }
