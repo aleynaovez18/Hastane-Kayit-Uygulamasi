@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hastane Kayıt Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏥 Hastane Kayıt Sistemi</h1>
+        </header>
+
+        <section class="form-section">
+            <h2>🔍 Hasta Sorgula</h2>
+            <form id="searchForm" class="search-form">
+                <div class="form-group">
+                    <label for="searchTc">TC Kimlik No</label>
+                    <div class="search-input-group">
+                        <input type="text" id="searchTc" name="searchTc" placeholder="11 haneli TC kimlik numarası" maxlength="11" required>
+                        <button type="submit" class="btn-search">Sorgula</button>
+                    </div>
+                </div>
+            </form>
+            <div id="searchResult" class="search-result"></div>
+        </section>
+
+        <section class="form-section">
+            <h2>Yeni Hasta Kaydı</h2>
+            <form id="patientForm">
+                <div class="form-group">
+                    <label for="tc">TC Kimlik No</label>
+                    <input type="text" id="tc" name="tc" placeholder="11 haneli TC kimlik numarası" maxlength="11" required>
+                </div>
+                <div class="form-group">
+                    <label for="isim">İsim</label>
+                    <input type="text" id="isim" name="isim" placeholder="Hasta adı soyadı" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefon">Telefon</label>
+                    <input type="tel" id="telefon" name="telefon" placeholder="Telefon numarası" required>
+                </div>
+                <button type="submit" class="btn-submit">Kaydet</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
