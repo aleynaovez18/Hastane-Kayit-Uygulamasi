@@ -5,6 +5,7 @@ Bu proje, bir **ASP.NET Core Web API** (Backend) ve modern bir **JavaScript** (F
 ## 🚀 Özellikler
 - **Hasta Kaydı:** Yeni hasta bilgilerini SQLite veritabanına kalıcı olarak kaydeder.
 - **TC ile Sorgulama:** Kayıtlı hastalar arasında hızlı arama yapmanızı sağlar.
+- **Güncelleme:** Kayıtlı TC'deki hastanın bilgilerini günceller
 - **SQLite Entegrasyonu:** Herhangi bir veritabanı kurulumu gerektirmeden "indir ve çalıştır" yapısına sahiptir.
 
 ## 🛠️ Nasıl Çalıştırılır?
